@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Inventory</title>
+</head>
+<body>
+    <h1>Food Inventory</h1>
+    <a href="{% url 'add_food' %}">Add Food Item</a>
+    <a href="{% url 'check_expired' %}">Check Expired Items</a>
+    <a href="{% url 'reduce_food_waste' %}">Remove Expired Items</a>
+    <ul>
+        {% for item in food_items %}
+            <li>
+                {{ item.name }} - {{ item.quantity }} units (Expires on {{ item.expiry_date }}) 
+                {% if item.is_expired %} <strong>[EXPIRED]</strong> {% endif %}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
