@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Food Inventory</title>
+</head>
+<body>
+    <h1>Food Inventory</h1>
+    <a href="{% url 'add_food' %}">Add New Food</a>
+    <ul>
+        {% for food in foods %}
+            <li>{{ food.name }} ({{ food.quantity }}) - Expiration Date: {{ food.expiration_date }}
+                <a href="{% url 'delete_food' food.id %}">Delete</a>
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
